@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
         sm = new SessionManager(this);
         sm.setId("ID");
         sm.getId();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main, CovidCountryFragment.newInstance())
+                    .commitNow();
+        }
     }
 
 }
