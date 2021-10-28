@@ -3,4 +3,16 @@
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
     </style>
+
+    <style name="toolbarApp" parent="Widget.AppCompat.Toolbar">
+        <item name="background">@color/grey</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="roundedImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">150dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
 </resources>

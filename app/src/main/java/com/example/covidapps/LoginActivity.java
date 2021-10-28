@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 ResponseUsers us = response.body();;
                 //TODO IsStatus if using wrong user id and password crashed with Null Pointer Exception
                 if (us.isStatus()) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
                 } else {
