@@ -41,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent i = new Intent(ProfileActivity.this, MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
+                finish();
             }
         });
 

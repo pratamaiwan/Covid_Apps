@@ -1,10 +1,14 @@
 package com.example.covidapps;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -58,9 +62,10 @@ public class LoginActivity extends AppCompatActivity {
                 //TODO IsStatus if using wrong user id and password crashed with Null Pointer Exception
                 if (us.isStatus()) {
                     sm.setId(us.getData().getId().toString(), us.getData().getFullName().toString(), us.getData().getEmail().toString());
-                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
                 }
