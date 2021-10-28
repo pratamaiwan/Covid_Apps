@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.covidapps.R;
 import com.example.covidapps.adapter.CovidCountryAdapter;
 import com.example.covidapps.adapter.CovidCountryClickableCallback;
-import com.example.covidapps.model.covid.CountryHeader;
+import com.example.covidapps.model.CountryHeader;
 import com.example.covidapps.viewmodel.CovidCountryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;

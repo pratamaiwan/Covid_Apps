@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.covidapps.model.covid.CountryHeader;
+import com.example.covidapps.model.CountryHeader;
 import com.example.covidapps.repository.CovidCountryRepository;
 
 import java.util.List;

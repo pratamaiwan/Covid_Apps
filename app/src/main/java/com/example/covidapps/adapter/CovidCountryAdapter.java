@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covidapps.R;
-import com.example.covidapps.model.covid.CountryHeader;
+import com.example.covidapps.model.CountryHeader;
 
 public class CovidCountryAdapter extends ListAdapter<CountryHeader, CovidCountryAdapter.ViewHolder> {
 
@@ -46,8 +46,8 @@ public class CovidCountryAdapter extends ListAdapter<CountryHeader, CovidCountry
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvFirstName.setText("Country : "+getItem(position).getCountry());
-        holder.tvLastName.setText("Continent : "+getItem(position).getContinent());
+        holder.tvFirstName.setText(getItem(position).getCountry());
+        holder.tvLastName.setText(getItem(position).getContinent());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

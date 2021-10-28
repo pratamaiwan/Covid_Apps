@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<ResponseUsers> call, @NonNull Response<ResponseUsers> response) {
                 ResponseUsers us = response.body();
-                Toast.makeText(getApplicationContext(), us.isStatus().toString(), Toast.LENGTH_LONG).show();
                 //TODO IsStatus if using wrong user id and password crashed with Null Pointer Exception
                 if (us.isStatus()) {
                     sm.setId(us.getData().getId().toString(), us.getData().getFullName().toString(), us.getData().getEmail().toString());

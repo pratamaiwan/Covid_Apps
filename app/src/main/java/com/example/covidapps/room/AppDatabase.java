@@ -10,13 +10,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.example.covidapps.dao.CountryDao;
-import com.example.covidapps.dao.UserDao;
-import com.example.covidapps.model.Data;
+import com.example.covidapps.entity.CountryItem;
 
-@Database(entities = {Data.class}, version = 1, exportSchema = false)
+@Database(entities = {CountryItem.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract CountryDao countryDao();
-    private final static String DB_NAME = "country";
+    private final static String DB_NAME = "Country";
 
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -29,7 +28,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, DB_NAME).
-                            fallbackToDestructiveMigration()
+                            fallbackToDestructiveMigration().
+                            allowMainThreadQueries()
                             .build();
                 }
             }

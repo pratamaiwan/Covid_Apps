@@ -1,12 +1,11 @@
 package com.example.covidapps.api;
 
-import com.example.covidapps.model.covid.CountryHeader;
+import com.example.covidapps.model.CountryHeader;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public interface MyApiEndPointInterface {
 

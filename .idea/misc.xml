@@ -8,8 +8,11 @@
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/drawable/gradient.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/drawable/gradient_light.xml" value="0.22314814814814815" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/drawable/tool_bar.xml" value="0.1685185185185185" />
-        <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/activity_main.xml" value="0.22653721682847897" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/activity_detail.xml" value="0.2296875" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/activity_test.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/covid_room_recyclerview.xml" value="0.2140625" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/covid_room_recyclerview_item.xml" value="0.67" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/CovidApps/app/src/main/res/layout/recycler_card.xml" value="0.21822916666666667" />

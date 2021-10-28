@@ -1,4 +1,4 @@
-package com.example.covidapps.model.covid;
+package com.example.covidapps.model;
 
 import com.google.gson.annotations.SerializedName;
 
