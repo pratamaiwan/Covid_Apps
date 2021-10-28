@@ -1,40 +1,49 @@
 package com.example.covidapps;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 
-import com.example.covidapps.dao.UserDao;
-import com.example.covidapps.databinding.FragmentLoginBinding;
+
 import com.example.covidapps.databinding.FragmentProfileBinding;
 import com.example.covidapps.model.Data;
-import com.example.covidapps.repository.UserRepo;
-import com.example.covidapps.room.AppDatabase;
+import com.example.covidapps.session.SessionManager;
 
-import java.util.List;
+import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
     private FragmentProfileBinding binding;
-    private LiveData<List<Data>> userdata;
-    private UserDao userDao;
-    private AppDatabase ad;
-    private Data data;
+    private SharedPreferences sp;
+    SessionManager sm;
 
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ImageView back = findViewById(R.id.backIcon);
 
-        userdata = userDao.getAllData();
+        sm= new SessionManager(this);
+        sm.getId();
 
-        binding.tvName.setText(data.getFullName());
+        binding.tvName.setText(sm.getFULLNAME());
+        binding.tvEmail.setText(sm.getEMAIL());
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
     }
+
 }

@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         sm = new SessionManager(this);
-        sm.setId("ID");
         sm.getId();
     }
 }

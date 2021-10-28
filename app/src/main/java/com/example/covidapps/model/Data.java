@@ -10,21 +10,6 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class Data{
 
-	public Data(int uid, @Nullable String companyId, @Nullable String lastLogin, @Nullable String dateCreated, @Nullable String avatar, @Nullable String ipAddress, @Nullable String fullName, @Nullable String lastActivity, @Nullable String id, @Nullable String banned, @Nullable String email, @Nullable String username) {
-		this.uid = uid;
-		this.companyId = companyId;
-		this.lastLogin = lastLogin;
-		this.dateCreated = dateCreated;
-		this.avatar = avatar;
-		this.ipAddress = ipAddress;
-		this.fullName = fullName;
-		this.lastActivity = lastActivity;
-		this.id = id;
-		this.banned = banned;
-		this.email = email;
-		this.username = username;
-	}
-
 	@PrimaryKey(autoGenerate = true)
 	public int uid;
 
@@ -85,51 +70,111 @@ public class Data{
 	@ColumnInfo(name = "username")
 	private String username;
 
+	public int getUid() {
+		return uid;
+	}
 
-	public String getCompanyId(){
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	@Nullable
+	public String getCompanyId() {
 		return companyId;
 	}
 
-	public String getLastLogin(){
+	public void setCompanyId(@Nullable String companyId) {
+		this.companyId = companyId;
+	}
+
+	@Nullable
+	public String getLastLogin() {
 		return lastLogin;
 	}
 
-	public String getDateCreated(){
+	public void setLastLogin(@Nullable String lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
+	@Nullable
+	public String getDateCreated() {
 		return dateCreated;
 	}
 
-	public String getAvatar(){
+	public void setDateCreated(@Nullable String dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	@Nullable
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public String getIpAddress(){
+	public void setAvatar(@Nullable String avatar) {
+		this.avatar = avatar;
+	}
+
+	@Nullable
+	public String getIpAddress() {
 		return ipAddress;
 	}
 
-	public String getFullName(){
+	public void setIpAddress(@Nullable String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
+	@Nullable
+	public String getFullName() {
 		return fullName;
 	}
 
-	public String getLastActivity(){
+	public void setFullName(@Nullable String fullName) {
+		this.fullName = fullName;
+	}
+
+	@Nullable
+	public String getLastActivity() {
 		return lastActivity;
 	}
 
+	public void setLastActivity(@Nullable String lastActivity) {
+		this.lastActivity = lastActivity;
+	}
 
-	public String getId(){
+	@Nullable
+	public String getId() {
 		return id;
 	}
 
-	public String getBanned(){
+	public void setId(@Nullable String id) {
+		this.id = id;
+	}
+
+	@Nullable
+	public String getBanned() {
 		return banned;
 	}
 
+	public void setBanned(@Nullable String banned) {
+		this.banned = banned;
+	}
 
-	public String getEmail(){
+	@Nullable
+	public String getEmail() {
 		return email;
 	}
 
-	public String getUsername(){
+	public void setEmail(@Nullable String email) {
+		this.email = email;
+	}
+
+	@Nullable
+	public String getUsername() {
 		return username;
+	}
+
+	public void setUsername(@Nullable String username) {
+		this.username = username;
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package com.example.covidapps;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -12,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.covidapps.api.RetroServer;
 import com.example.covidapps.databinding.FragmentLoginBinding;
+import com.example.covidapps.model.Data;
 import com.example.covidapps.model.ResponseUsers;
+import com.example.covidapps.session.SessionManager;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,12 +26,14 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private FragmentLoginBinding binding;
     ResponseUsers ru = new ResponseUsers();
+    SessionManager sm;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        sm = new SessionManager(this);
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 ResponseUsers us = response.body();;
                 //TODO IsStatus if using wrong user id and password crashed with Null Pointer Exception
                 if (us.isStatus()) {
+                    sm.setId(us.getData().getId().toString(), us.getData().getFullName().toString(), us.getData().getEmail().toString());
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
