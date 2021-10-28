@@ -54,5 +54,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main, CovidCountryFragment.newInstance())
+                    .commitNow();
+        }
+
     }
 }

@@ -58,14 +58,6 @@ public class CovidCountryFragment extends Fragment {
         recyclerView.setAdapter(covidCountryAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        fab = view.findViewById(R.id.room_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         return view;
     }
 
