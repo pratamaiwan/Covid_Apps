@@ -1,4 +1,4 @@
-package com.example.covidapps;
+package com.example.covidapps.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covidapps.R;
+import com.example.covidapps.adapter.CovidCountryAdapter;
+import com.example.covidapps.adapter.CovidCountryClickableCallback;
 import com.example.covidapps.model.covid.CountryHeader;
 import com.example.covidapps.viewmodel.CovidCountryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,10 +28,10 @@ public class CovidCountryFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private com.example.covidapps.CovidCountryAdapter covidCountryAdapter;
+    private CovidCountryAdapter covidCountryAdapter;
     private ProgressBar pb;
 
-    private final com.example.covidapps.CovidCountryClickableCallback covidCountryClickableCallback = new com.example.covidapps.CovidCountryClickableCallback() {
+    private final CovidCountryClickableCallback covidCountryClickableCallback = new CovidCountryClickableCallback() {
         @Override
         public void onClick(View view, CountryHeader countryHeader) {
             Gson gson = new Gson();
@@ -54,7 +57,7 @@ public class CovidCountryFragment extends Fragment {
         View view = inflater.inflate(R.layout.covid_room_recyclerview, container, false);
         pb = view.findViewById(R.id.rv_pb);
         recyclerView = view.findViewById(R.id.roomRecyclerView);
-        covidCountryAdapter = new com.example.covidapps.CovidCountryAdapter(covidCountryClickableCallback);
+        covidCountryAdapter = new CovidCountryAdapter(covidCountryClickableCallback);
         recyclerView.setAdapter(covidCountryAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

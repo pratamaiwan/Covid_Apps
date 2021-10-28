@@ -1,4 +1,4 @@
-package com.example.covidapps;
+package com.example.covidapps.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covidapps.R;
 import com.example.covidapps.model.covid.CountryHeader;
 
 public class CovidCountryAdapter extends ListAdapter<CountryHeader, CovidCountryAdapter.ViewHolder> {
 
     private final CovidCountryClickableCallback covidCountryClickableCallback;
 
-    protected CovidCountryAdapter(@NonNull CovidCountryClickableCallback covidCountryClickableCallback) {
+    public CovidCountryAdapter(@NonNull CovidCountryClickableCallback covidCountryClickableCallback) {
         super(new AsyncDifferConfig.Builder<>(new DiffUtil.ItemCallback<CountryHeader>() {
             @Override
             public boolean areItemsTheSame(@NonNull CountryHeader oldItem, @NonNull CountryHeader newItem) {
@@ -63,7 +64,7 @@ public class CovidCountryAdapter extends ListAdapter<CountryHeader, CovidCountry
 
         @Override
         public void onClick(View v) {
-            int position = getAbsoluteAdapterPosition(); // gets item position
+            int position = getLayoutPosition(); // gets item position
             if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                 CountryHeader countryHeader = getItem(position);
                 covidCountryClickableCallback.onClick(v, countryHeader);

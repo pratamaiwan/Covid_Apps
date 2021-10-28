@@ -19,8 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.covidapps.api.RetroServer;
 import com.example.covidapps.databinding.FragmentLoginBinding;
 import com.example.covidapps.model.Data;
+import com.example.covidapps.model.ResponseFailed;
 import com.example.covidapps.model.ResponseUsers;
 import com.example.covidapps.session.SessionManager;
+import com.google.gson.Gson;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -58,7 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         RetroServer.getInstance().login(username, password).enqueue(new Callback<ResponseUsers>() {
             @Override
             public void onResponse(@NonNull Call<ResponseUsers> call, @NonNull Response<ResponseUsers> response) {
-                ResponseUsers us = response.body();;
+                ResponseUsers us = response.body();
+                Toast.makeText(getApplicationContext(), us.isStatus().toString(), Toast.LENGTH_LONG).show();
                 //TODO IsStatus if using wrong user id and password crashed with Null Pointer Exception
                 if (us.isStatus()) {
                     sm.setId(us.getData().getId().toString(), us.getData().getFullName().toString(), us.getData().getEmail().toString());

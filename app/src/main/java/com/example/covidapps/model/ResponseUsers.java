@@ -11,7 +11,7 @@ public class ResponseUsers{
 	private String message;
 
 	@SerializedName("status")
-	private boolean status;
+	private Boolean status;
 
 	@SerializedName("token")
 	private String token;
@@ -24,7 +24,7 @@ public class ResponseUsers{
 		return message;
 	}
 
-	public boolean isStatus(){
+	public Boolean isStatus(){
 		return status;
 	}
 

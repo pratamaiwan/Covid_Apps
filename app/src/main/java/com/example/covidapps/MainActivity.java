@@ -2,20 +2,14 @@ package com.example.covidapps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SearchView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.covidapps.databinding.ActivityMainBinding;
-import com.example.covidapps.databinding.FragmentLoginBinding;
+import com.example.covidapps.fragment.CovidCountryFragment;
 import com.example.covidapps.session.SessionManager;
 
 public class MainActivity extends AppCompatActivity {

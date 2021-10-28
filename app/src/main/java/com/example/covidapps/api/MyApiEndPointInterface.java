@@ -1,4 +1,4 @@
-package com.example.covidapps;
+package com.example.covidapps.api;
 
 import com.example.covidapps.model.covid.CountryHeader;
 

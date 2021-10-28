@@ -9,13 +9,14 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.example.covidapps.dao.CountryDao;
 import com.example.covidapps.dao.UserDao;
 import com.example.covidapps.model.Data;
 
 @Database(entities = {Data.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract UserDao userDao();
-    private final static String DB_NAME = "user_db";
+    public abstract CountryDao countryDao();
+    private final static String DB_NAME = "country";
 
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

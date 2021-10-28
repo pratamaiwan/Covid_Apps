@@ -1,4 +1,4 @@
-package com.example.covidapps;
+package com.example.covidapps.adapter;
 
 import android.view.View;
 

@@ -6,7 +6,8 @@ import android.os.Looper;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.covidapps.MyApiEndPointInterface;
+import com.example.covidapps.api.MyApiEndPointInterface;
+import com.example.covidapps.api.RetrofitInstance;
 import com.example.covidapps.model.covid.CountryHeader;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class CovidCountryRepository {
     };
 
     public CovidCountryRepository(Application application){
-        com.example.covidapps.RetrofitInstance retrofitInstance = new com.example.covidapps.RetrofitInstance();
+        RetrofitInstance retrofitInstance = new RetrofitInstance();
         API = retrofitInstance.getAPI();
     }
 
