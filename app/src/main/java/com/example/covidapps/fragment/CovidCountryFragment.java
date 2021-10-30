@@ -17,10 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.covidapps.R;
 import com.example.covidapps.adapter.CovidCountryAdapter;
 import com.example.covidapps.adapter.CovidCountryClickableCallback;
+import com.example.covidapps.adapter.CovidCountryNewAdapter;
+import com.example.covidapps.adapter.CovidCountryNewClickableCallback;
+import com.example.covidapps.entity.CountryItem;
 import com.example.covidapps.model.CountryHeader;
-import com.example.covidapps.viewmodel.CovidCountryViewModel;
+import com.example.covidapps.room.AppDatabase;
+import com.example.covidapps.viewModel.CovidCountryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CovidCountryFragment extends Fragment {
 
@@ -28,14 +35,14 @@ public class CovidCountryFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private CovidCountryAdapter covidCountryAdapter;
+    private CovidCountryNewAdapter covidCountryNewAdapter;
     private ProgressBar pb;
 
-    private final CovidCountryClickableCallback covidCountryClickableCallback = new CovidCountryClickableCallback() {
+    private final CovidCountryNewClickableCallback callback = new CovidCountryNewClickableCallback() {
         @Override
-        public void onClick(View view, CountryHeader countryHeader) {
+        public void onClick(View view, CountryItem countryItem) {
             Gson gson = new Gson();
-            String userString = gson.toJson(countryHeader);
+            String userString = gson.toJson(countryItem);
             Toast.makeText(requireActivity(), userString, Toast.LENGTH_SHORT).show();
         }
     };
@@ -57,8 +64,8 @@ public class CovidCountryFragment extends Fragment {
         View view = inflater.inflate(R.layout.covid_room_recyclerview, container, false);
         pb = view.findViewById(R.id.rv_pb);
         recyclerView = view.findViewById(R.id.roomRecyclerView);
-        covidCountryAdapter = new CovidCountryAdapter(covidCountryClickableCallback);
-        recyclerView.setAdapter(covidCountryAdapter);
+        covidCountryNewAdapter = new CovidCountryNewAdapter(callback);
+        recyclerView.setAdapter(covidCountryNewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
@@ -67,10 +74,29 @@ public class CovidCountryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        covidCountryViewModel.getAllCovidCountry().observe(getViewLifecycleOwner(), coutries -> {
-            pb.setVisibility(View.INVISIBLE);
-            covidCountryAdapter.submitList(coutries);
-        });
+
+//        AppDatabase ad = AppDatabase.getDatabase(requireContext());
+//
+//        covidCountryViewModel.getAllCovidCountry().observe(getViewLifecycleOwner(), coutries -> {
+//            pb.setVisibility(View.INVISIBLE);
+// //           covidCountryAdapter.submitList(coutries);
+//            List<CountryItem> list = new ArrayList<>();
+//
+//            for (int i = 0; i < coutries.size(); i++) {
+//                //ad.countryDao().insert(coutries.get(i));
+//                CountryHeader currentData = coutries.get(i);
+//                CountryItem ci = new CountryItem();
+//
+//                ci.setContinent(currentData.getContinent());
+//
+//
+//                ad.countryDao().insert(ci);
+//                list.add(ci);
+//            }
+//
+//            covidCountryNewAdapter.submitList(list);
+//
+//        });
     }
 
 }
