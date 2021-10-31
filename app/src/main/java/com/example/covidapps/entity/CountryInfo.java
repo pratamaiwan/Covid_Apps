@@ -1,26 +1,53 @@
 package com.example.covidapps.entity;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class CountryInfo{
 
+	@PrimaryKey(autoGenerate = true)
+	@ColumnInfo(name = "uid")
+	public int uid;
+
+	@SerializedName("country")
+	@ColumnInfo(name = "country")
+	private String country;
+
 	@SerializedName("flag")
+	@ColumnInfo(name = "flag")
 	private String flag;
 
 	@SerializedName("_id")
+	@ColumnInfo(name = "id")
 	private int id;
 
 	@SerializedName("iso2")
+	@ColumnInfo(name = "iso2")
 	private String iso2;
 
 	@SerializedName("lat")
-	private int lat;
+	@ColumnInfo(name = "lat")
+	private Double lat;
 
 	@SerializedName("long")
-	private int jsonMemberLong;
+	@ColumnInfo(name = "long")
+	private Double jsonMemberLong;
 
 	@SerializedName("iso3")
+	@ColumnInfo(name = "iso3")
 	private String iso3;
+
+	public void setCountry(String country){
+		this.country = country;
+	}
+
+	public String getCountry(){
+		return country;
+	}
 
 	public void setFlag(String flag){
 		this.flag = flag;
@@ -46,19 +73,19 @@ public class CountryInfo{
 		return iso2;
 	}
 
-	public void setLat(int lat){
+	public void setLat(Double lat){
 		this.lat = lat;
 	}
 
-	public int getLat(){
+	public Double getLat(){
 		return lat;
 	}
 
-	public void setJsonMemberLong(int jsonMemberLong){
+	public void setJsonMemberLong(Double jsonMemberLong){
 		this.jsonMemberLong = jsonMemberLong;
 	}
 
-	public int getJsonMemberLong(){
+	public Double getJsonMemberLong(){
 		return jsonMemberLong;
 	}
 

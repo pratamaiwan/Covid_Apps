@@ -9,28 +9,28 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.covidapps.dao.CountryInfoDao;
+import com.example.covidapps.entity.CountryInfo;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.example.covidapps.dao.CountryDao;
-import com.example.covidapps.entity.CountryItem;
+@Database(entities = {CountryInfo.class}, version = 3, exportSchema = false)
+public abstract class CountryInfoDatabase extends RoomDatabase {
+    public abstract CountryInfoDao countryInfoDao();
+    private final static String DB_NAME = "CountryInfo";
 
-@Database(entities = {CountryItem.class}, version = 3, exportSchema = false)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract CountryDao countryDao();
-    private final static String DB_NAME = "Country";
-
-    private static volatile AppDatabase INSTANCE = null;
+    private static volatile CountryInfoDatabase INSTANCE = null;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    public static AppDatabase getDatabase(final Context context) {
+    public static CountryInfoDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
+            synchronized (CountryInfoDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context,
-                            AppDatabase.class, DB_NAME).
+                            CountryInfoDatabase.class, DB_NAME).
                             fallbackToDestructiveMigration().
                             addCallback(callback).
                             allowMainThreadQueries().
@@ -51,14 +51,14 @@ public abstract class AppDatabase extends RoomDatabase {
     };
 
     static class DbAsync extends AsyncTask<Void, Void, Void>{
-        private CountryDao countryDao;
-        public DbAsync(AppDatabase appDatabase){
-            countryDao=appDatabase.countryDao();
+        private CountryInfoDao countryInfoDao;
+        public DbAsync(CountryInfoDatabase countryInfoDatabase){
+            countryInfoDao=countryInfoDatabase.countryInfoDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            countryDao.deleteAll();
+            countryInfoDao.deleteAll();
             return null;
         }
     }

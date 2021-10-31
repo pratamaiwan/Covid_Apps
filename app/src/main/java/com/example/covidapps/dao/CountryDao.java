@@ -21,4 +21,10 @@ public interface CountryDao {
 
     @Query("DELETE FROM CountryItem")
     void deleteAll();
+
+    @Query("SELECT COUNT(1) FROM CountryItem")
+    int size();
+
+    @Query("SELECT * FROM CountryItem where country Like :country")
+    LiveData<List<CountryItem>> getSearchedCountry(String country);
 }

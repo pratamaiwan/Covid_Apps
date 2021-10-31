@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetroServer {
+public class RetroServerLogin {
     private static final String base_url = "https://talentpool.oneindonesia.id/api/";
 
     private static Retrofit setInit(){

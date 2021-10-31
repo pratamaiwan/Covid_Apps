@@ -56,7 +56,7 @@ public class CountryHeader {
 	private int casesPerOneMillion;
 
 	@SerializedName("countryInfo")
-	private CountryInfo countryInfo;
+	private CountryInfoM countryInfoM;
 
 	@SerializedName("updated")
 	private long updated;
@@ -141,8 +141,8 @@ public class CountryHeader {
 		return casesPerOneMillion;
 	}
 
-	public CountryInfo getCountryInfo(){
-		return countryInfo;
+	public CountryInfoM getCountryInfo(){
+		return countryInfoM;
 	}
 
 	public long getUpdated(){

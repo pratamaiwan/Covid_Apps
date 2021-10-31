@@ -11,6 +11,16 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Bookmark"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:layout_marginLeft="40dp"/>
+
+
         <ImageView
             android:id="@+id/backIcon"
             android:layout_width="wrap_content"
@@ -19,13 +29,13 @@
             android:layout_centerVertical="true"
             />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/saveToBookmark"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:src="@drawable/ic_baseline_bookmark_border_24"-->
-<!--            android:layout_centerVertical="true"/>-->
+        <ImageView
+            android:id="@+id/saveBookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_search_24"
+            android:layout_centerVertical="true"/>
 
 
     </RelativeLayout>

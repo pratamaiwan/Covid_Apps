@@ -2,7 +2,7 @@ package com.example.covidapps.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CountryInfo{
+public class CountryInfoM {
 
 	@SerializedName("flag")
 	private String flag;

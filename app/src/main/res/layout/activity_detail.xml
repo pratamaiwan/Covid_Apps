@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -14,8 +13,8 @@
         android:paddingBottom="20dp">
 
         <include
-            android:id="@+id/tbProfile"
-            layout="@layout/toolbar" />
+            android:id="@+id/tbDetail"
+            layout="@layout/toolbar_detail" />
 
         <RelativeLayout
             android:id="@+id/imgUser"
@@ -25,6 +24,7 @@
             android:layout_marginTop="20dp">
 
             <ImageView
+                android:id="@+id/flag"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="9dp"
@@ -84,14 +84,15 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/rl_header_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/cornsilk"
+            android:background="@color/dark_gray"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -118,20 +119,21 @@
             android:layout_weight="1"
             android:background="@color/cornsilk"
             android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/rl_header_statistic">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="Statistik Covid"
+                    android:text="Covid Statistic"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
 
@@ -143,11 +145,12 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1">
+        android:layout_below="@+id/linlay1"
+        android:id="@+id/rl_statistic"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,33 +161,39 @@
             android:layout_marginRight="30dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:alignmentMode="alignBounds"
+                android:columnCount="3"
+                android:rowOrderPreserved="false">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:layout_columnWeight="1"
+                    android:text="Cases"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/tv_email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text=":"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_cases"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
                     android:fontFamily="sans-serif-light"
+                    android:gravity="right"
                     android:text="email.com"
                     android:textColor="#000000"
                     android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
-
-            </LinearLayout>
+            </GridLayout>
 
 
             <LinearLayout
@@ -193,54 +202,39 @@
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date Created"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Unknown"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
+                <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Login"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
 
-                    android:textSize="13sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Cases Today"
+                        android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Unknown"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    <TextView
+                        android:id="@+id/tv_cases_today"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
 
             </LinearLayout>
 
@@ -250,28 +244,354 @@
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Activity"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Unknown"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <View
+                <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Deaths"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_deaths"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Deaths Today"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_deaths_today"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Recovered"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_recovered"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Recovered Today"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_recovered_today"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linlay1"
+        android:id="@+id/rl_info"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:alignmentMode="alignBounds"
+                android:columnCount="3"
+                android:rowOrderPreserved="false">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="ID"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text=":"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="right"
+                    android:text="email.com"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+            </GridLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Country Code"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_country_code"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Longitude"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_longitude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:alignmentMode="alignBounds"
+                    android:columnCount="3"
+                    android:rowOrderPreserved="false">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text="Latitude"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:text=":"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_latitude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="right"
+                        android:text="email.com"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+                </GridLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

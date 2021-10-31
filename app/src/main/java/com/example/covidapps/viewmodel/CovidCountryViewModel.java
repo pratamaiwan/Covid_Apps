@@ -1,6 +1,7 @@
 package com.example.covidapps.viewModel;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -17,14 +18,12 @@ import java.util.List;
 public class CovidCountryViewModel extends AndroidViewModel {
 
     private CovidCountryRepository covidCountryRepository;
-    private MutableLiveData<List<CountryHeader>> allCovidCountry = new MutableLiveData<>();
     private LiveData<List<CountryItem>> allCountry;
 
 
     public CovidCountryViewModel(@NonNull Application application) {
         super(application);
         covidCountryRepository = new CovidCountryRepository(application);
-        allCovidCountry = covidCountryRepository.getAllCovidCountry();
         allCountry = covidCountryRepository.getAllCountry();
     }
 
@@ -32,12 +31,11 @@ public class CovidCountryViewModel extends AndroidViewModel {
         covidCountryRepository.insert(countries);
     }
 
+
     public LiveData<List<CountryItem>> getAllCountry() {
         return allCountry;
     }
 
-    public MutableLiveData<List<CountryHeader>> getAllCovidCountry(){
-        return allCovidCountry;
-    }
+
 
 }

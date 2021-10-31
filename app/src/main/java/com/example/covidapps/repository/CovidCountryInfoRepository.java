@@ -6,26 +6,26 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.covidapps.api.MyApiEndPointInterface;
 import com.example.covidapps.api.RetrofitInstance;
 import com.example.covidapps.dao.CountryDao;
+import com.example.covidapps.dao.CountryInfoDao;
+import com.example.covidapps.entity.CountryInfo;
 import com.example.covidapps.entity.CountryItem;
-import com.example.covidapps.model.CountryHeader;
 import com.example.covidapps.room.AppDatabase;
+import com.example.covidapps.room.CountryInfoDatabase;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class CovidCountryRepository {
-    public CountryDao countryDao;
+public class CovidCountryInfoRepository {
+    public CountryInfoDao countryInfoDao;
     private MyApiEndPointInterface API;
-    private LiveData<List<CountryItem>> allCountry;
-    private AppDatabase appDatabase;
+    private LiveData<List<CountryInfo>> allCountryInfo;
+    private CountryInfoDatabase countryInfoDatabase;
 
 
     private final ExecutorService networkExecutor =
@@ -38,16 +38,16 @@ public class CovidCountryRepository {
         }
     };
 
-    public CovidCountryRepository(Application application){
-        appDatabase = AppDatabase.getDatabase(application);
-        countryDao = appDatabase.countryDao();
-        allCountry = countryDao.getAllCountry();
+    public CovidCountryInfoRepository(Application application){
+        countryInfoDatabase = CountryInfoDatabase.getDatabase(application);
+        countryInfoDao = countryInfoDatabase.countryInfoDao();
+        allCountryInfo = countryInfoDao.getAllCountriesInfo();
         RetrofitInstance retrofitInstance = new RetrofitInstance();
         API = retrofitInstance.getAPI();
     }
 
-    public void insert(List<CountryItem> countryItemList){
-        new InsertAsyncTask(countryDao).execute(countryItemList);
+    public void insert(List<CountryInfo> countryItemList){
+        new InsertAsyncTask(countryInfoDao).execute(countryItemList);
     };
 
     public void delete(){
@@ -57,7 +57,7 @@ public class CovidCountryRepository {
                 mainThread.execute(new Runnable() {
                     @Override
                     public void run() {
-                        countryDao.deleteAll();
+                        countryInfoDao.deleteAll();
                     }
                 });
             }
@@ -65,27 +65,25 @@ public class CovidCountryRepository {
     }
 
     public int countCountry(){
-        return countryDao.size();
+        return countryInfoDao.size();
     }
 
-    public LiveData<List<CountryItem>> getAllCountry(){
-        return allCountry;
+    public LiveData<List<CountryInfo>> getAllCountryInfo(){
+        return allCountryInfo;
     }
 
-    public LiveData<List<CountryItem>> getFilteredCountry(String filter){
-        return countryDao.getSearchedCountry(filter);
-    }
+    public LiveData<List<CountryInfo>> getCountryInfo(String country) { return allCountryInfo;}
 
-    private static  class InsertAsyncTask extends AsyncTask<List<CountryItem>,Void, Void>{
-        private CountryDao countryDao;
+    private static  class InsertAsyncTask extends AsyncTask<List<CountryInfo>,Void, Void>{
+        private CountryInfoDao countryInfoDao;
 
-        public InsertAsyncTask(CountryDao countryDao){
-            this.countryDao = countryDao;
+        public InsertAsyncTask(CountryInfoDao countryInfoDao){
+            this.countryInfoDao = countryInfoDao;
         }
 
         @Override
-        protected Void doInBackground(List<CountryItem>... lists) {
-            countryDao.insert(lists[0]);
+        protected Void doInBackground(List<CountryInfo>... lists) {
+            countryInfoDao.insert(lists[0]);
             return null;
         }
     }
